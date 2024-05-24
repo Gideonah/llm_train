@@ -11,6 +11,7 @@ from llama_recipes.datasets import (
     get_grammar_dataset,
     get_alpaca_dataset,
     get_samsum_dataset,
+    get_preprocessed_sapher,
 )
 
 
@@ -53,7 +54,8 @@ DATASET_PREPROC = {
     "alpaca_dataset": partial(get_alpaca_dataset),
     "grammar_dataset": get_grammar_dataset,
     "samsum_dataset": get_samsum_dataset,
-    "custom_dataset": get_custom_dataset,
+    "custom_dataset": get_preprocessed_sapher,
+    "sapher_dataset": get_preprocessed_sapher,
 }
 
 

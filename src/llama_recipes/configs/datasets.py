@@ -32,3 +32,10 @@ class custom_dataset:
     file: str = "examples/custom_dataset.py"
     train_split: str = "train"
     test_split: str = "validation"
+
+
+@dataclass
+class sapher_dataset:
+    dataset: str = "sapher_dataset"
+    train_split: str = "train"
+    test_split: str = "test"

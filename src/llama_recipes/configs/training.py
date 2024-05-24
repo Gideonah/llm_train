@@ -8,16 +8,16 @@ from dataclasses import dataclass
 class train_config:
     model_name: str="PATH/to/Model"
     tokenizer_name: str=None
-    enable_fsdp: bool=False
+    enable_fsdp: bool=True
     low_cpu_fsdp: bool=False
     run_validation: bool=True
-    batch_size_training: int=4
-    batching_strategy: str="packing" #alternative: padding
+    batch_size_training: int=1
+    batching_strategy: str="padding" #alternative: padding
     context_length: int=4096
     gradient_accumulation_steps: int=1
     gradient_clipping: bool = False
     gradient_clipping_threshold: float = 1.0
-    num_epochs: int=3
+    num_epochs: int=1
     max_train_step: int=0
     max_eval_step: int=0
     num_workers_dataloader: int=1
@@ -32,13 +32,13 @@ class train_config:
     peft_method: str = "lora" # None, llama_adapter (Caution: llama_adapter is currently not supported with FSDP)
     use_peft: bool=False
     from_peft_checkpoint: str="" # if not empty and use_peft=True, will load the peft checkpoint and resume the fine-tuning on that checkpoint
-    output_dir: str = "PATH/to/save/PEFT/model"
+    output_dir: str = "/workspace/llama_recipes/model"
     freeze_layers: bool = False
     num_freeze_layers: int = 1
     quantization: bool = False
     one_gpu: bool = False
     save_model: bool = True
-    dist_checkpoint_root_folder: str="PATH/to/save/FSDP/model" # will be used if using FSDP
+    dist_checkpoint_root_folder: str="/workspace/llama_recipes/checkpoint_save" # will be used if using FSDP
     dist_checkpoint_folder: str="fine-tuned" # will be used if using FSDP
     save_optimizer: bool=False # will be used if using FSDP
     use_fast_kernels: bool = False # Enable using SDPA from PyTroch Accelerated Transformers, make use Flash Attention and Xformer memory-efficient kernels
