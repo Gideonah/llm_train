@@ -8,8 +8,8 @@ import datasets
 
 
 def get_preprocessed_sapher(dataset_config, tokenizer, split):
-    dataset = datasets.load_dataset("Gideonah/sapher_test", split=split)
-   
+    dataset = datasets.load_dataset("Gideonah/sapher_knowledge", split=split)
+    #dataset = dataset.select(list(range(100)))
     def tokenize_add_label(sample):
         prompt = tokenizer.encode(sample["text"], add_special_tokens=False)
         
